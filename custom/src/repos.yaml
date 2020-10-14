@@ -6,21 +6,12 @@
     depth: "$DEPTH_DEFAULT"
   remotes:
     openupgrade: https://github.com/OCA/OpenUpgrade.git
-    horizon: https://github.com/be-cloud-be/horizon.git
-    web: https://github.com/OCA/web.git
-    partner: https://github.com/OCA/partner-contact.git
   target:
     openupgrade $ODOO_VERSION
-    horizon $ODOO_VERSION
-    web $ODOO_VERSION
-    partner $ODOO_VERSION
   merges:
     - openupgrade $ODOO_VERSION
-    - horizon $ODOO_VERSION
-    - web $ODOO_VERSION
-    - partner $ODOO_VERSION
     
-./oca:
+./web:
   defaults:
     # Shallow repositories (1=1) are faster & thinner
     # You may need a bigger depth when merging PRs
@@ -30,10 +21,20 @@
     partner: https://github.com/OCA/partner-contact.git
   target:
     web $ODOO_VERSION
-    partner $ODOO_VERSION
   merges:
     - web $ODOO_VERSION
-    - partner $ODOO_VERSION
+
+./partner-contact:
+  defaults:
+    # Shallow repositories (1=1) are faster & thinner
+    # You may need a bigger depth when merging PRs
+    depth: "$DEPTH_DEFAULT"
+  remotes:
+    partner-contact: https://github.com/OCA/partner-contact.git
+  target:
+    partner-contact $ODOO_VERSION
+  merges:
+    - partner-contact $ODOO_VERSION
 
 ./horizon:
   defaults:
